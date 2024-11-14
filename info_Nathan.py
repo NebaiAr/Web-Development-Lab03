@@ -40,7 +40,7 @@ experience_data = {
 }
 
 projects_data = {
-    "Krabby Patty Recipe": "Created the famous Recipe and tailored it from scratch",
+    "Elden Ring Boss Finder": "The app has the user input a boss name, which it uses to display information about the boss they searched. This includes dropped items, which the user can then view information about.",
 }
 
 programming_data = {

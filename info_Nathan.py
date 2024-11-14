@@ -40,7 +40,7 @@ experience_data = {
 }
 
 projects_data = {
-    "Elden Ring Boss Finder": "The app has the user input a boss name, which it uses to display information about the boss they searched. This includes dropped items, which the user can then view information about.",
+    "Elden Ring Boss Finder": "The app has the user input a boss name (or have one randomly selected), which it uses to display information about the boss they searched. This includes dropped items, which the user can then view information about."
 }
 
 programming_data = {

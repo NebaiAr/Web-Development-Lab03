@@ -41,6 +41,7 @@ experience_data = {
 
 projects_data = {
     "Krabby Patty Recipe": "Created the famous Recipe and tailored it from scratch",
+    "Boss Finder":"Created a boss finder by using an Elden Ring API that displays information about a selected or randomly selected boss. Display's loot dropped by the boss and information about said loot."
 }
 
 programming_data = {

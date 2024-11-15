@@ -22,7 +22,7 @@ Welcome to our Streamlit Web Development Lab03 app! You can navigate between the
 
 1. Nebai Araya's Portfolio: This page showcases Nebai Araya's portfolio, including his education, professional experience, projects, skills, and activities.
 2. Nathan Wilson's Portfolio: This page showcases Nathan Wilson's portfolio, including his education, professional experience, projects, skills, and activities.
-3. IN DEVELOPMENT: This page is currently in development and will be available soon.
+3. Elden Ring Boss Finder: This page is an Elden Ring boss search tool that has the user input a boss name (or have one randomly selected), which it uses to display information about the boss they searched. This includes dropped items, which the user can click on to view information about.
 4. IN DEVELOPMENT: This page is currently in development and will be available soon.
 
 """)

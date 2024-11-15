@@ -41,6 +41,10 @@ if searchButton and bossName:
 elif randomButton:  # Handle Random button click
     bossData = getRandomBoss()
 
+# If the user searched but no data was found
+if search_button and boss_data and not boss_data.get("data"):
+    st.write("No boss found. Please enter a valid boss name or click 'Random'.")
+
 # Display boss information if data is retrieved
 if bossData and "data" in bossData and bossData["data"]:
     bossInfo = bossData["data"][0]
@@ -55,19 +59,4 @@ if bossData and "data" in bossData and bossData["data"]:
     st.subheader("Health Points")
     st.write(bossInfo.get("healthPoints", "Unknown"))
 
-    # Display dropped items
-    st.subheader("Dropped Items")
-    for drop in bossInfo.get("drops", []):
-        itemType = drop.get("type", "").lower()
-        itemName = drop.get("name", "")
-        
-        with st.expander(f"{itemName} ({itemType.title()})"):
-            itemData = getItemData(itemType, itemName)
-            if "data" in itemData and itemData["data"]:
-                itemInfo = itemData["data"][0]
-                st.write("Description:", itemInfo.get("description", "No description available"))
-                st.write("Attack Power:", itemInfo.get("attack_power", "N/A"))
-                st.write("Location:", itemInfo.get("location", "Unknown"))
-                st.write("Other Info:", itemInfo.get("additional_info", "None"))
-else:
-    st.write("No boss found. Please enter a boss name or click 'Random'.")
+# Next task: Get dropped items and display their information (This might be hard)

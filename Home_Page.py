@@ -10,6 +10,7 @@ st.header("CS 1301")
 st.subheader("Team 53, Web Development - Section C")
 st.subheader("Nathan Wilson, Nebai Araya")
 
+st.image("Images/Elden Ring.avif", width=200)
 # Introduction
 # TODO: Write a quick description for all of your pages in this lab below, in the form:
 #       1. **Page Name**: Description

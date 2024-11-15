@@ -42,7 +42,7 @@ elif randomButton:  # Handle Random button click
     bossData = getRandomBoss()
 
 # If the user searched but no data was found
-if search_button and boss_data and not boss_data.get("data"):
+if searchButton and bossData and not bossData.get("data"):
     st.write("No boss found. Please enter a valid boss name or click 'Random'.")
 
 # Display boss information if data is retrieved

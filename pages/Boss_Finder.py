@@ -61,4 +61,4 @@ if bossData and "data" in bossData and bossData["data"]:
     st.subheader("Health Points")
     st.write(bossInfo.get("healthPoints", "Unknown"))
 
-#Next task: Get dropped items and display their information (This might be hard)
+#Next task: Get dropped items and display their information

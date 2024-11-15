@@ -2,7 +2,7 @@ import requests as req
 import random
 import streamlit as st
 
-url = "https://eldenring.fanapis.com/api"
+baseURL = "https://eldenring.fanapis.com/api"
 
 def getBossData(bossName=None):
     if bossName:

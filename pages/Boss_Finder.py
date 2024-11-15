@@ -22,6 +22,7 @@ def getRandomBoss():
     randomBossName = random.choice(bosses)["name"]
     response = req.get(f"{baseURL}/bosses?name={randomBossName}")
     return response.json()
+
 #NEW
 def getItemData(itemType, itemName):
     response = req.get(f"{baseURL}/{itemType}?name={itemName}")

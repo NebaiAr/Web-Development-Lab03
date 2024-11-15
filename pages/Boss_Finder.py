@@ -1,5 +1,5 @@
 import streamlit as st
-import Boss_Finder_Functions
+import Boss_Finder_Functions.py
 
 st.title("Elden Ring Boss Finder")
 

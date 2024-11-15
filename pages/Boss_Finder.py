@@ -8,14 +8,14 @@ def getBossData(bossName=None):
     if bossName:
         response = req.get(f"{baseURL}/bosses?name={bossName}")
     else:
-        response = req.get(f"{baseURL}/bosses")
+        response = req.get(f"{baseURL}/bosses?limit=100")
         bosses = response.json().get("data", [])
         bossName = random.choice(bosses)["name"]
         response = req.get(f"{baseURL}/bosses?name={bossName}")
     return response.json()
 
 def getRandomBoss():
-    response = req.get(f"{baseURL}/bosses")
+    response = req.get(f"{baseURL}/bosses?limit=100")
     bosses = response.json().get("data", [])
     randomBossName = random.choice(bosses)["name"]
     response = req.get(f"{baseURL}/bosses?name={randomBossName}")

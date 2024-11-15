@@ -6,8 +6,8 @@ st.title("Elden Ring Boss Finder")
 # Input box for boss name
 bossName = st.text_input("Enter Boss Name:")
 
-search_button = st.button("Search")
-random_button = st.button("Random")
+searchButton = st.button("Search")
+randomButton = st.button("Random")
 
 bossData = None
 

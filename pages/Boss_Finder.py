@@ -1,3 +1,6 @@
+import streamlit as st
+import Boss_Finder_Functions
+
 st.title("Elden Ring Boss Finder")
 
 # Input box for boss name

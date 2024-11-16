@@ -26,17 +26,20 @@ def getRandomBoss():
 #NEW
 def getItemData(itemName):
     itemType = None
-    weaponRes = req.get(f"{baseURL}/weapons?limit=400").json()
-    itemRes = req.get(f"{baseURL}/items?limit=500").json()
-    ashRes = req.get(f"{baseURL}/ashes?limit=100").json()
-    if itemName in weaponRes['data']:
-        itemType = 'weapons'
-    elif itemName in itemRes['data']:
-        itemType = 'items'
-    elif itemName in ashRes['data']:
-        itemType = 'items'
-    response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
+    weaponRes = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
+    itemRes = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
+    ashRes = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
     return response.json()
+     item = findItem(itemName, weaponRes)
+    if item:
+        return item
+    item = findItem(itemName, itemRes)
+    if item:
+        return item
+    item = findItem(itemName, ashRes)
+    if item:
+        return item
+    return {"error": f"Item '{itemName}' not found in any category"}
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
 

@@ -29,11 +29,11 @@ def getItemData(itemName):
     weaponRes = req.get(f"{baseURL}/weapons?limit=400").json()
     itemRes = req.get(f"{baseURL}/items?limit=500").json()
     ashRes = req.get(f"{baseURL}/ashes?limit=100").json()
-    if itemName in weaponRes['name']:
+    if itemName in weaponRes['data']['name']:
         itemType = 'weapons'
-    elif itemName in itemRes['name']:
+    elif itemName in itemRes['data']['name']:
         itemType = 'items'
-    elif itemName in ashRes['name']:
+    elif itemName in ashRes['data']['name']:
         itemType = 'items'
     response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
     return response.json()

@@ -37,9 +37,12 @@ searchButton = st.button("Search")
 randomButton = st.button("Random")
 
 bossData = None
+bossInfo = None
 
 if bossData not in st.session_state:
     st.session_state.bossData = None
+if bossInfo not in st.session_state:
+    st.session_state.bossInfo = None
 
 #Handle Search button click
 if searchButton and bossName:
@@ -53,18 +56,18 @@ if searchButton and st.session_state.bossData and not st.session_state.bossData.
 
 #Display boss information if data is retrieved
 if st.session_state.bossData and "data" in st.session_state.bossData and st.session_state.bossData["data"]:
-    bossInfo = st.session_state.bossData["data"][0]
-    items = bossInfo.get("drops")
+    st.session_state.bossInfo = st.session_state.bossData["data"][0]
+    items = st.session_state.bossInfo.get("drops")
 
     #Display boss information
-    st.header(bossInfo["name"])
-    st.image(bossInfo.get("image", ""))
+    st.header(st.session_state.bossInfo["name"])
+    st.image(st.session_state.bossInfo.get("image", ""))
     st.subheader("Description")
-    st.write(bossInfo.get("description", "No description available"))
+    st.write(st.session_state.bossInfo.get("description", "No description available"))
     st.subheader("Location")
-    st.write(bossInfo.get("location", "Unknown"))
+    st.write(st.session_state.bossInfo.get("location", "Unknown"))
     st.subheader("Health Points")
-    st.write(bossInfo.get("healthPoints", "Unknown"))
+    st.write(st.session_state.bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
     viewedItem = st.selectbox("Which drop would you like to view?", items)
     st.write(viewedItem)

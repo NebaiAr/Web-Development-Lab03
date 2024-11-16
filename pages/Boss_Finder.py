@@ -62,7 +62,8 @@ if bossData and "data" in bossData and bossData["data"]:
     st.subheader("Health Points")
     st.write(bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
-    for item in bossInfo.get("drops"):
-        st.write(item, "Unknown")
+    st.selectbox("Which drop would you like to view?", bossInfo.get("drops"))
+    #for item in bossInfo.get("drops"):
+    #    st.write(item, "Unknown")
 
 #Next task: Get dropped items and display their information

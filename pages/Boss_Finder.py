@@ -30,7 +30,7 @@ def getItemData(itemName):
     itemRes = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
     ashRes = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
     return response.json()
-     item = findItem(itemName, weaponRes)
+    item = findItem(itemName, weaponRes)
     if item:
         return item
     item = findItem(itemName, itemRes)

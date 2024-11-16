@@ -51,6 +51,7 @@ if searchButton and bossData and not bossData.get("data"):
 #Display boss information if data is retrieved
 if bossData and "data" in bossData and bossData["data"]:
     bossInfo = bossData["data"][0]
+    items = bossInfo.get("drops")
 
     #Display boss information
     st.header(bossInfo["name"])
@@ -62,8 +63,8 @@ if bossData and "data" in bossData and bossData["data"]:
     st.subheader("Health Points")
     st.write(bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
-    viewedItem = st.selectbox("Which drop would you like to view?", bossInfo.get("drops"))
-    st.write(viewedItem, "Unknown")
+    viewedItem = st.selectbox("Which drop would you like to view?")
+    st.write(viewedItem)
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

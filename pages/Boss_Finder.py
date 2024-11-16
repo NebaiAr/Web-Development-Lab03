@@ -24,19 +24,22 @@ def getRandomBoss():
     return response.json()
 
 #NEW
+if "weaponsData" not in st.session_state:
+    st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
+if "itemsData" not in st.session_state:
+    st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
+if "ashesData" not in st.session_state:
+    st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
+
 def getItemData(itemName):
-    itemType = None
-    weaponRes = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
-    itemRes = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
-    ashRes = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
-    return response.json()
-    item = findItem(itemName, weaponRes)
+    """Retrieve item data using session state."""
+    item = findItem(itemName, st.session_state.weaponsData)
     if item:
         return item
-    item = findItem(itemName, itemRes)
+    item = findItem(itemName, st.session_state.itemsData)
     if item:
         return item
-    item = findItem(itemName, ashRes)
+    item = findItem(itemName, st.session_state.ashesData)
     if item:
         return item
     return {"error": f"Item '{itemName}' not found in any category"}

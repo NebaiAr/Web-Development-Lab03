@@ -24,25 +24,20 @@ def getRandomBoss():
     return response.json()
 
 #NEW
-if "weaponsData" not in st.session_state:
-    st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
-if "itemsData" not in st.session_state:
-    st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
-if "ashesData" not in st.session_state:
-    st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
-
 def getItemData(itemName):
-    """Retrieve item data using session state."""
-    item = findItem(itemName, st.session_state.weaponsData)
-    if item:
-        return item
-    item = findItem(itemName, st.session_state.itemsData)
-    if item:
-        return item
-    item = findItem(itemName, st.session_state.ashesData)
-    if item:
-        return item
-    return {"error": f"Item '{itemName}' not found in any category"}
+    itemType = None
+    if "weaponsData" not in st.session_state:
+        st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
+    if "itemsData" not in st.session_state:
+        st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
+    if "ashesData" not in st.session_state:
+        st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
+    if "sorceriesData" not in st.session_state:
+        st.session_state.sorceriesData = req.get(f"{baseURL}/sorceries?limit=100").json().get("data", [])
+    if "incantData" not in st.session_state:
+        st.session_state.incantData = req.get(f"{baseURL}/incantations?limit=100").json().get("data", [])
+    response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
+    return response.json()
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
 

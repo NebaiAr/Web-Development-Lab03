@@ -36,22 +36,22 @@ bossName = st.text_input("Enter Boss Name:")
 searchButton = st.button("Search")
 randomButton = st.button("Random")
 
-st.session_state.bossData = None
-bossData = st.session_state.bossData
+if bossData not in st.session_state:
+    st.session_state.bossData = None
 
 #Handle Search button click
 if searchButton and bossName:
-    bossData = getBossData(bossName)
+    st.session_state.bossData = getBossData(bossName)
 elif randomButton:  #Handle Random button click
-    bossData = getRandomBoss()
+    st.session_state.bossData = getRandomBoss()
 
 #If the user searched but no data was found
-if searchButton and bossData and not bossData.get("data"):
+if searchButton and st.session_state.bossData and not st.session_state.bossData.get("data"):
     st.write("No boss found. Please enter a valid boss name or click 'Random'.")
 
 #Display boss information if data is retrieved
-if bossData and "data" in bossData and bossData["data"]:
-    bossInfo = bossData["data"][0]
+if st.session_state.bossData and "data" in st.session_state.bossData and st.session_state.bossData["data"]:
+    bossInfo = st.session_state.bossData["data"][0]
     items = bossInfo.get("drops")
 
     #Display boss information

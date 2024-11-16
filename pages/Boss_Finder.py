@@ -36,6 +36,8 @@ bossName = st.text_input("Enter Boss Name:")
 searchButton = st.button("Search")
 randomButton = st.button("Random")
 
+bossData = None
+
 if bossData not in st.session_state:
     st.session_state.bossData = None
 

@@ -62,7 +62,8 @@ if bossData and "data" in bossData and bossData["data"]:
     st.subheader("Health Points")
     st.write(bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
-    st.selectbox("Which drop would you like to view?", bossInfo.get("drops"))
+    viewedItem = st.selectbox("Which drop would you like to view?", bossInfo.get("drops"))
+    st.write(viewedItem, "Unknown")
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

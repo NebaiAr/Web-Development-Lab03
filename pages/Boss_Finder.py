@@ -24,8 +24,18 @@ def getRandomBoss():
     return response.json()
 
 #NEW
-def getItemData(itemType, itemName):
-    response = req.get(f"{baseURL}/{itemType}?name={itemName}")
+def getItemData(itemName):
+    itemType = None
+    weaponRes = req.get(f"{baseURL}/weapons?limit=400").json()
+    itemRes = req.get(f"{baseURL}/items?limit=500").json()
+    ashRes = req.get(f"{baseURL}/ashes?limit=100").json()
+    if itemName in weaponRes['name']:
+        itemType = 'weapons'
+    elif itemName in itemRes['name']:
+        itemType = 'items'
+    elif itemName in ashRes['name']:
+        itemType = 'items'
+    response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
     return response.json()
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
@@ -67,7 +77,8 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     st.write(st.session_state.bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
     viewedItem = st.selectbox("Which drop would you like to view?", items)
-    st.write(viewedItem)
+    itemData = getItemData(viewedItem)
+    st.subheader(itemData.get('name'))
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

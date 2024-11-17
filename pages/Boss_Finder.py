@@ -24,20 +24,62 @@ def getRandomBoss():
     return response.json()
 
 #NEW
-def getItemData(itemName):
-    itemType = None
-    if "weaponsData" not in st.session_state:
-        st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
-    if "itemsData" not in st.session_state:
-        st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
-    if "ashesData" not in st.session_state:
-        st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
-    if "sorceriesData" not in st.session_state:
-        st.session_state.sorceriesData = req.get(f"{baseURL}/sorceries?limit=100").json().get("data", [])
-    if "incantData" not in st.session_state:
-        st.session_state.incantData = req.get(f"{baseURL}/incantations?limit=100").json().get("data", [])
-    response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
-    return response.json()
+def getItemData():
+    bossInfo = response['data'][0]
+    drops = bossInfo.get('drops', [])
+    endpoints = [
+        "weapons",
+        "items",
+        "spirits",
+        "armors",
+        "shields",
+        "talismans",
+        "incantations",
+        "sorceries"
+    ]
+    dropDetails = []
+    for drop in drops:
+        if "Runes" in drop:
+            dropDetails.append({
+                'name': drop,
+                'description': 'Currency used in the Lands Between'
+            })
+        found = False
+        for endpoint in endpoints:
+            response = requests.get(f"https://eldenring.fanapis.com/api/{endpoint}?name={drop}")
+            data = response.json()
+            if data['count'] > 0:
+                dropInfo = data['data'][0]
+                dropInfo['type'] = endpoint[:-1]  # Remove the trailing 's' for singular form
+                dropDetails.append(dropInfo)
+                found = True
+                break
+        if not found:
+            dropDetails.append({
+                'name': drop,
+                'description': 'No additional information available.',
+                'type': 'unknown'
+            })
+    return {
+        "boss_info": bossInfo,
+        "drop_details": dropDetails
+    }
+    
+    
+    
+    # itemType = None
+    # if "weaponsData" not in st.session_state:
+    #     st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
+    # if "itemsData" not in st.session_state:
+    #     st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
+    # if "ashesData" not in st.session_state:
+    #     st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
+    # if "sorceriesData" not in st.session_state:
+    #     st.session_state.sorceriesData = req.get(f"{baseURL}/sorceries?limit=100").json().get("data", [])
+    # if "incantData" not in st.session_state:
+    #     st.session_state.incantData = req.get(f"{baseURL}/incantations?limit=100").json().get("data", [])
+    # response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
+    # return response.json()
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
 

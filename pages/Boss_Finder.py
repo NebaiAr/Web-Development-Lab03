@@ -44,7 +44,7 @@ def getItemData(response):
                 'name': drop,
                 'description': 'Currency used in the Lands Between',
                 'type': 'currency',
-                'image': None
+                'image': 'https://eldenring.fanapis.com/images/items/17f69df1f09l0i2012e482ufurh3wy.png'
             })
             continue
         found = False

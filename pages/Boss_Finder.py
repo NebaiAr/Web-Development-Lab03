@@ -47,7 +47,7 @@ def getItemData(response):
             continue
         found = False
         for endpoint in endpoints:
-            response = requests.get(f"https://eldenring.fanapis.com/api/{endpoint}?name={drop}")
+            response = req.get(f"https://eldenring.fanapis.com/api/{endpoint}?name={drop}")
             data = response.json()
             if data['count'] > 0:
                 dropInfo = data['data'][0]

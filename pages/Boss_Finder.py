@@ -100,7 +100,7 @@ if searchButton and bossName:
 elif randomButton:  #Handle Random button click
     st.session_state.bossData = getRandomBoss()
 
-data = getItemData(bossName)
+data = getItemData(response)
 
 #If the user searched but no data was found
 if searchButton and st.session_state.bossData and not st.session_state.bossData.get("data"):

@@ -43,6 +43,8 @@ def getItemData(response):
             dropDetails.append({
                 'name': drop,
                 'description': 'Currency used in the Lands Between'
+                'type': 'currency',
+                'image': None
             })
             continue
         found = False
@@ -132,6 +134,8 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             st.write(f"**Description:** {drop.get('description', 'No description available.')}")
             if 'image' in drop:
                 st.image(drop['image'])
+            else:
+                st.write('No image available')
             break
     # viewedItem = st.selectbox("Which drop would you like to view?", items)
     # st.subheader(viewedItem)

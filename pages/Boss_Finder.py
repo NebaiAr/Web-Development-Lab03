@@ -98,7 +98,6 @@ if "bossInfo" not in st.session_state:
     st.session_state.bossInfo = None
 if "dropDetails" not in st.session_state:
     st.session_state.dropDetails = None
-
 #Handle Search button click
 if searchButton and bossName:
     st.session_state.bossData = getBossData(bossName)
@@ -134,7 +133,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             st.write(f"**Description:** {drop.get('description', 'No description available.')}")
             if 'image' in drop:
                 st.image(drop['image'])
-            else:
+            elif drop['image'] == 'null':
                 st.write('No image available')
             break
     # viewedItem = st.selectbox("Which drop would you like to view?", items)

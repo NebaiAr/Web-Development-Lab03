@@ -44,6 +44,7 @@ def getItemData(response):
                 'name': drop,
                 'description': 'Currency used in the Lands Between'
             })
+            continue
         found = False
         for endpoint in endpoints:
             response = requests.get(f"https://eldenring.fanapis.com/api/{endpoint}?name={drop}")
@@ -93,6 +94,8 @@ if "bossData" not in st.session_state:
     st.session_state.bossData = None
 if "bossInfo" not in st.session_state:
     st.session_state.bossInfo = None
+if "dropDetails" not in st.session_state:
+    st.session_state.dropDetails = None
 
 #Handle Search button click
 if searchButton and bossName:
@@ -100,7 +103,6 @@ if searchButton and bossName:
 elif randomButton:  #Handle Random button click
     st.session_state.bossData = getRandomBoss()
 
-data = getItemData(response)
 
 #If the user searched but no data was found
 if searchButton and st.session_state.bossData and not st.session_state.bossData.get("data"):
@@ -109,7 +111,7 @@ if searchButton and st.session_state.bossData and not st.session_state.bossData.
 #Display boss information if data is retrieved
 if st.session_state.bossData and "data" in st.session_state.bossData and st.session_state.bossData["data"]:
     st.session_state.bossInfo = st.session_state.bossData["data"][0]
-    items = st.session_state.bossInfo.get("drops")
+    st.session_state.dropDetails = getItemData(st.session_state.bossData)["drop_details"]
 
     #Display boss information
     st.header(st.session_state.bossInfo["name"])
@@ -121,12 +123,16 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     st.subheader("Health Points")
     st.write(st.session_state.bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
-    for drop in dropDetails:
-        st.write(f"**Name:** {drop['name']}")
-        st.write(f"**Type:** {drop['type'].capitalize()}")
-        st.write(f"**Description:** {drop.get('description', 'No description available.')}")
-        if 'image' in drop:
-            st.image(drop['image'])
+    dropNames = [drop['name'] for drop in st.session_state.dropDetails]
+    selectedDrop = st.selectbox("Select a drop to view details:", dropNames)
+    for drop in st.session_state.dropDetails:
+        if drop['name'] == selectedDrop:
+            st.write(f"**Name:** {drop['name']}")
+            st.write(f"**Type:** {drop['type'].capitalize()}")
+            st.write(f"**Description:** {drop.get('description', 'No description available.')}")
+            if 'image' in drop:
+                st.image(drop['image'])
+            break
     # viewedItem = st.selectbox("Which drop would you like to view?", items)
     # st.subheader(viewedItem)
     #for item in bossInfo.get("drops"):

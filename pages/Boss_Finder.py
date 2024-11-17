@@ -42,7 +42,7 @@ def getItemData(response):
         if "Runes" in drop:
             dropDetails.append({
                 'name': drop,
-                'description': 'Currency used in the Lands Between'
+                'description': 'Currency used in the Lands Between',
                 'type': 'currency',
                 'image': None
             })

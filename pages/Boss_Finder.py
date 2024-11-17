@@ -79,7 +79,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     st.subheader("Item Drops")
     viewedItem = st.selectbox("Which drop would you like to view?", items)
     itemData = getItemData(viewedItem)
-    st.subheader(itemData.get('name'))
+    st.subheader(viewdItem)
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

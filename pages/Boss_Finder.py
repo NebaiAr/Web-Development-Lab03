@@ -107,7 +107,7 @@ elif randomButton:  #Handle Random button click
 
 
 #If the user searched but no data was found
-if searchButton and st.session_state.bossData and not st.session_state.bossData.get("data"):
+if searchButton and st.session_state.bossData and not st.session_state.bossData["data"]:
     st.write("No boss found. Please enter a valid boss name or click 'Random'.")
 
 #Display boss information if data is retrieved

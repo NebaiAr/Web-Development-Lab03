@@ -12,19 +12,19 @@ def getBossData(bossName=None):
         response = req.get(f"{baseURL}/bosses?limit=100")
         bosses = response.json().get("data")
         bossName = random.choice(bosses)["name"]
-        response = req.get(f"{baseURL}/bosses?name={bossName}")
-    return response.json()
+        response = req.get(f"{baseURL}/bosses?name={bossName}").json()
+    return response
 
 #NEW
 def getRandomBoss():
     response = req.get(f"{baseURL}/bosses?limit=100")
     bosses = response.json().get("data")
     randomBossName = random.choice(bosses)["name"]
-    response = req.get(f"{baseURL}/bosses?name={randomBossName}")
-    return response.json()
+    response = req.get(f"{baseURL}/bosses?name={randomBossName}").json()
+    return response
 
 #NEW
-def getItemData():
+def getItemData(response):
     bossInfo = response['data'][0]
     drops = bossInfo.get('drops', [])
     endpoints = [
@@ -99,6 +99,8 @@ if searchButton and bossName:
     st.session_state.bossData = getBossData(bossName)
 elif randomButton:  #Handle Random button click
     st.session_state.bossData = getRandomBoss()
+
+data = getItemData(bossName)
 
 #If the user searched but no data was found
 if searchButton and st.session_state.bossData and not st.session_state.bossData.get("data"):

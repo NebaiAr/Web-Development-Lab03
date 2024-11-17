@@ -119,8 +119,14 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     st.subheader("Health Points")
     st.write(st.session_state.bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
-    viewedItem = st.selectbox("Which drop would you like to view?", items)
-    st.subheader(viewedItem)
+    for drop in dropDetails:
+        st.write(f"**Name:** {drop['name']}")
+        st.write(f"**Type:** {drop['type'].capitalize()}")
+        st.write(f"**Description:** {drop.get('description', 'No description available.')}")
+        if 'image' in drop:
+            st.image(drop['image'])
+    # viewedItem = st.selectbox("Which drop would you like to view?", items)
+    # st.subheader(viewedItem)
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

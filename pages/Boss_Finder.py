@@ -30,6 +30,7 @@ def getItemData(response):
     endpoints = [
         "weapons",
         "ashes",
+        "ammos",
         "items",
         "spirits",
         "armors",
@@ -54,7 +55,7 @@ def getItemData(response):
             data = response.json()
             if data['count'] > 0:
                 dropInfo = data['data'][0]
-                dropInfo['type'] = endpoint[:-1]  # Remove the trailing 's' for singular form
+                dropInfo['type'] = endpoint[:]  # Remove the trailing 's' for singular form
                 dropDetails.append(dropInfo)
                 found = True
                 break

@@ -17,21 +17,6 @@ def getBossData(bossName=None):
 
 #NEW
 def getRandomBoss():
-    # response = req.get(f"{baseURL}/bosses?limit=1").json()
-    # totalBosses = response.get("total")
-    
-    # # Calculate total number of pages based on limit (100 items per page)
-    # limit = 100
-    # totalPages = ((totalBosses + limit - 1) // limit) - 1
-
-    # randomPage = random.randint(0, totalPages)
-    # response = req.get(f"{baseURL}/bosses?limit={limit}&page={randomPage}").json()
-
-    # # Randomly select a boss from the selected page
-    # bosses = response.get("data") 
-    # randomBoss = random.choice(bosses)
-    # bossName = randomBoss["name"]
-    
     response = req.get(f"{baseURL}/bosses?name={bossName}").json()
     return response
     response = req.get(f"{baseURL}/bosses?limit=100")

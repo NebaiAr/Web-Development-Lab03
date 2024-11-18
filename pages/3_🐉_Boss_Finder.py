@@ -17,8 +17,6 @@ def getBossData(bossName=None):
 
 #NEW
 def getRandomBoss():
-    response = req.get(f"{baseURL}/bosses?name={bossName}").json()
-    return response
     response = req.get(f"{baseURL}/bosses?limit=100")
     bosses = response.json().get("data")
     randomBossName = random.choice(bosses)["name"]

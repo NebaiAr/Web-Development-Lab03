@@ -22,7 +22,7 @@ def getRandomBoss():
     
     # Calculate total number of pages based on limit (100 items per page)
     limit = 100
-    totalPages = (totalBosses + limit - 1) // limit
+    totalPages = ((totalBosses + limit - 1) // limit) - 1
 
     randomPage = random.randint(0, totalPages)
     response = req.get(f"{baseURL}/bosses?limit={limit}&page={randomPage}").json()

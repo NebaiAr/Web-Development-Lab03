@@ -119,7 +119,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     if st.session_state.bossInfo.get('image') == 'null':
         st.write("No image available. Sorry :(")
     else:
-        st.image(st.session_state.bossInfo.get("image", ""))
+        st.image(st.session_state.bossInfo.get("image"))
     st.subheader("Description")
     st.write(st.session_state.bossInfo.get("description", "No description available"))
     st.subheader("Location")

@@ -62,7 +62,8 @@ def getItemData(response):
             dropDetails.append({
                 'name': drop,
                 'description': 'No additional information available.',
-                'type': 'unknown'
+                'type': 'unknown',
+                'image': 'No image available'
             })
     return {
         "boss_info": bossInfo,
@@ -131,6 +132,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     dropNames = [drop['name'] for drop in st.session_state.dropDetails]
     selectedDrop = st.selectbox("Select a drop to view details:", dropNames)
     for drop in st.session_state.dropDetails:
+        if drop['name'] 
         if drop['name'] == selectedDrop:
             st.write(f"**Name:** {drop['name']}")
             st.write(f"**Type:** {drop['type'].capitalize()}")

@@ -89,10 +89,10 @@ def getItemData(response):
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
 
-#Input box for boss name
-bossName = st.text_input("Enter Boss Name:")
-
-searchButton = st.button("Search")
+#Input box for boss name + submit/random button created
+with st.form(key="boss_search_form"):
+    bossName = st.text_input("Enter Boss Name:")
+    searchButton = st.form_submit_button("Search")
 randomButton = st.button("Random")
 
 if "bossData" not in st.session_state:

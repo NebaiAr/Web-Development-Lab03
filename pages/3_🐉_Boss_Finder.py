@@ -93,7 +93,7 @@ st.title("Elden Ring Boss Finder")
 with st.form(key="boss_search_form"):
     bossName = st.text_input("Enter Boss Name:")
     searchButton = st.form_submit_button("Search")
-    randomButton = st.button("Random")
+randomButton = st.button("Random")
 
 if "bossData" not in st.session_state:
     st.session_state.bossData = None

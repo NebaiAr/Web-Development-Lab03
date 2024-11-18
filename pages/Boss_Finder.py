@@ -134,9 +134,9 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             st.write(f"**Name:** {drop['name']}")
             st.write(f"**Type:** {drop['type'].capitalize()}")
             st.write(f"**Description:** {drop.get('description', 'No description available.')}")
-            if 'image' in drop:
+            if type(drop['image']) == str:
                 st.image(drop['image'])
-            elif drop['image'] == 'null':
+            elif drop['image'] == None:
                 st.write('No image available')
             break
     # viewedItem = st.selectbox("Which drop would you like to view?", items)

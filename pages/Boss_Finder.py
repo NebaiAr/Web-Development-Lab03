@@ -63,7 +63,7 @@ def getItemData(response):
                 'name': drop,
                 'description': 'No additional information available.',
                 'type': 'unknown',
-                'image': 'No image available'
+                'image': None
             })
     return {
         "boss_info": bossInfo,

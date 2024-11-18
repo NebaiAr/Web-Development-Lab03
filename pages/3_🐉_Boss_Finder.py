@@ -25,14 +25,14 @@ def getRandomBoss():
     totalPages = (totalBosses + limit - 1) // limit
 
     randomPage = random.randint(0, totalPages)
-    response = req.get(f"{baseURL}/bosses?limit={limit}&page={random_page}").json()
+    response = req.get(f"{baseURL}/bosses?limit={limit}&page={randomPage}").json()
 
     # Randomly select a boss from the selected page
     bosses = response.get("data") 
     randomBoss = random.choice(bosses)
     bossName = randomBoss["name"]
     
-    response = req.get(f"{baseURL}/bosses?name={boss_name}").json()
+    response = req.get(f"{baseURL}/bosses?name={bossName}").json()
     return response
     # response = req.get(f"{baseURL}/bosses?limit=100")
     # bosses = response.json().get("data")

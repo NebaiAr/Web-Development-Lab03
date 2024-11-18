@@ -9,7 +9,7 @@ response = model.generate_content("Write a poem about how learning web developme
 print(response.text) #dont forget to print your response!
 
 st.title("AI Battle Assistant")
-
+st.write("Welcome to the Elden Ring AI Battle Assistant! Enter in a weapon and sorcery (or have them randomly selected for you) and recieve a detailed explanation on how you can pair them together in battle. Once the report is finished, you can ask follow-up questions about the combination")
  # response = req.get(f"{baseURL}/bosses?limit=1").json()
  # totalBosses = response.get("total")
     

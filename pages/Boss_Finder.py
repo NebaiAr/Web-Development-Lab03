@@ -29,6 +29,7 @@ def getItemData(response):
     drops = bossInfo.get('drops', [])
     endpoints = [
         "weapons",
+        "ashes",
         "items",
         "spirits",
         "armors",

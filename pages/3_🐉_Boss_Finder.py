@@ -52,7 +52,7 @@ def getItemData(response):
             data = response.json()
             if data['count'] > 0:
                 dropInfo = data['data'][0]
-                dropInfo['type'] = endpoint[:]  # Remove the trailing 's' for singular form
+                dropInfo['type'] = endpoint[:]
                 dropDetails.append(dropInfo)
                 found = True
                 break

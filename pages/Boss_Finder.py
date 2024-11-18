@@ -139,7 +139,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             if type(drop['image']) == str:
                 st.image(drop['image'])
             elif drop['image'] == None:
-                st.write('No image available')
+                st.write(f"**Image**: No image available")
             break
     # viewedItem = st.selectbox("Which drop would you like to view?", items)
     # st.subheader(viewedItem)

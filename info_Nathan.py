@@ -3,7 +3,7 @@
 
 #CHANGE BELOW
 profile_picture = "Images/profile.jpeg"
-about_me = "I'm Nathan Wilson. I'm a first year Computer Engineering major at the Georgia Institute of Technology."
+about_me = "I'm Nathan Wilson. I'm a first year Computer Engineering major at the Georgia Institute of Technology interested in hardware, web development, and game design."
 
 
 #CHANGE BELOW (OPTIONAL)
@@ -12,23 +12,23 @@ github_image_url = "https://cdn-icons-png.flaticon.com/256/25/25231.png"
 email_image_url = "https://logowik.com/content/uploads/images/513_email.jpg"
 
 #CHANGE BELOW
-my_linkedin_url = "https://www.linkedin.com/in/spongebob-squarepants-44b857281/"
-my_github_url = "https://github.com/spongebob-squarepants"
-my_email_address = "spongebob@gmail.com"
+my_linkedin_url = "https://www.linkedin.com/in/nathan-wilson-134903295/"
+my_github_url = "https://github.com/NathanNWCW"
+my_email_address = "nathannwcw@gmail.com"
 
 
 education_data ={
-    'Degree': 'Bachelor of Science in Computer Science',
+    'Degree': 'Bachelor of Engineering in Computer Engineering',
     'Institution': 'Georgia Institute of Technology',
     'Location': 'Atlanta, GA',
-    'Graduation Date': 'Never',
-    'GPA': '4.0'
+    'Graduation Date': '2028',
+    'GPA': 'n/a'
 }
 course_data = {
-    "code":["CS 1301", "CS 1331", "MATH 1554", "CS 2050"], 
-    "names":["Intro to CS", "Intro to OOP", "Linear Algebra", "Discrete Mathematics"], 
-    "semester_taken":["2nd", "3rd", "2nd", "2nd"],
-    "skills":["Python is not my favorite snake anymore", "OOP(S!) (Java Edition)", "Basically row reduction", "If only my grade was discrete too..."],
+    "code":["CS 1301", "CHEM 1310", "MATH 1551", "ENG 1102"], 
+    "names":["Intro to CS", "Principles of General Chemistry for Engineers", "Differential Calculus", "English Composition II"], 
+    "semester_taken":["1st", "1st", "1st", "1st"],
+    "skills":["Experience using Python, as well as elementary experience with HTML and Javascript.", "Experience working in a lab. Experience balancing my schedule.", "Differentiation and limits.", "Experience writing more refined essays and learning how to make poetry interesting for engineers."],
     }
 experience_data = {
     "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",

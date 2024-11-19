@@ -38,7 +38,8 @@ experience_data = {
 }
 
 projects_data = {
-    "Elden Ring Boss Finder": "The app has the user input a boss name (or have one randomly selected), which it uses to display information about the boss they searched. This includes dropped items, which the user can then view information about."
+    "Elden Ring Boss Finder": "The app has the user input a boss name (or have one randomly selected), which it uses to display information about the boss they searched. This includes dropped items, which the user can then view information about.",
+    "Elden Ring Battle Assistant": "This is an AI assistant that takes in a weapon and a sorcery and provides details on how they can be combined in a build and used effectively. You can also discuss more details with it after the initial breakdown."
 }
 
 programming_data = {

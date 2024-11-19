@@ -29,15 +29,20 @@ with st.form("battle_form"):
     sorceryName = st.text_input("Enter Sorcery Name:")
     searchButton = st.form_submit_button("Search")
 randomButton = st.button("Randomize Weapon and Sorcery")
-# Weapon and Sorcery data
-weapon = None
-sorcery = None
+
+# Weapon, Sorcery, and AI Context data
+if "weapon" not in st.session_state:
+    st.session_state.weapon = None
+if "sorcery" not in st.session_state:
+    st.session_state.sorcery = None
+if "aiContext" not in st.session_state:
+    st.session_state.aiContext = ""
 
 if searchButton:
     if weaponName:
         response = req.get(f"{baseURL}/weapons?name={weaponName}").json()
         if response.get("data"):
-            weapon = response["data"][0]
+            st.session_state.weapon = response["data"][0]
         else:
             st.error("Weapon not found. Please try another name.")
     else:
@@ -46,28 +51,28 @@ if searchButton:
     if sorceryName:
         response = req.get(f"{baseURL}/sorceries?name={sorceryName}").json()
         if response.get("data"):
-            sorcery = response["data"][0]
+            st.session_state.sorcery = response["data"][0]
         else:
             st.error("Sorcery not found. Please try another name.")
     else:
         st.error("Please enter a sorcery name or click the Randomize button.")
 
 elif randomButton:
-    weapon = randomWeapon()
-    sorcery = randomSorcery()
+    st.session_state.weapon = randomWeapon()
+    st.session_state.sorcery = randomSorcery()
 
 
-if weapon and sorcery:
+if st.session_state.weapon and st.session_state.sorcery:
     st.header("Selected Weapon and Sorcery")
     col1, col2 = st.columns(2)
 
     with col1:
-        st.image(weapon.get("image"), caption=weapon.get("name", "Unknown Weapon"))
-        st.write(f"**Description:** {weapon.get('description', 'No description available.')}")
+        st.image(st.session_state.weapon.get("image"), caption=st.session_state.weapon.get("name", "Unknown Weapon"))
+        st.write(f"**Description:** {st.session_state.weapon.get('description', 'No description available.')}")
         
     with col2:
-        st.image(sorcery.get("image", ""), caption=sorcery.get("name", "Unknown Sorcery"))
-        st.write(f"**Description:** {sorcery.get('description', 'No description available.')}")
+        st.image(st.session_state.sorcery.get("image", ""), caption=st.session_state.sorcery.get("name", "Unknown Sorcery"))
+        st.write(f"**Description:** {st.session_state.sorcery.get('description', 'No description available.')}")
 
     st.subheader("Battle Strategy")
     try:
@@ -108,7 +113,9 @@ if weapon and sorcery:
 
     if followupButton and followupQuestion:
         try:
-            followupResponse = model.generate_content(followupQuestion)
-            st.write(followupResponse.result)
+            fullPrompt = f"{st.session_state.aiContext}\n\nFollow-up Question: {followupQuestion}"
+            followupResponse = model.generate_content(fullPrompt)
+            st.write(followupResponse.text)
+            st.session_state.ai_context += f"\n\nFollow-up Question: {followupQuestion}\nAI Response: {followupResponse.text}"
         except Exception as e:
             st.error(f"Failed to generate follow-up response: {e}")

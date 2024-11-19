@@ -65,7 +65,7 @@ spoken_data = {
     "Spanish": "Limited Working Proficiency",
 }
 leadership_data = {
-    "Driver at Mrs Puff's School": (["- Elected Worst Student of the Century"],"Images/puff.jpg"),
+    "Assistant Instructor at KICKS Taekwondo": (["- Helped lead the teens/adults class alongside the lead instructor. As there were usually 15+ people in class, I had to be flexible."],"Images/Taekwondo.jpg"),
 
 }
 activity_data={

@@ -69,5 +69,6 @@ leadership_data = {
 }
 activity_data={
     "Marching band": ["- Marched sousaphone for a total of two years now", 
-            "- Learned a load of diligence from marching"]
+            "- Learned a load of diligence from marching"],
+    "National Honor Society": ["- Volunteered at a multitude of locations in my local area for community service"]
 }

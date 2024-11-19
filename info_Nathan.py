@@ -31,11 +31,9 @@ course_data = {
     "skills":["Python as well as very basic HTML and a touch of Javascript.", "How to balance my schedule and how to write lab reports effectively.", "Differentiation and limits.", "How to make poetry interesting."],
     }
 experience_data = {
-    "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",
-                                                                          "- Increased Company Revenue by 200 dollars", "- Made Mr. Krabs Proud"],),
-    "Cleaner at Krusty Krab":(["- Made the floor almost reflective",
-                                                           "- Increased customer visits by three folds by making restaurant clean"],),
-    "Jelly Fish Catcher":(["- Caught 100+ Jellyfish with the help of my colleague Patrick"],)
+    "Volunteer at Fire Departments": (["- Mostly cleaned the firehouse and engines.",
+                                                                          "- Learned how to use a firehose, if the skill is needed.", "- Learned about some problems faced by rural fire departments, such as a lack of city water."],),
+    
 
 }
 

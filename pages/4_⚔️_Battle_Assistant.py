@@ -146,7 +146,7 @@ if st.session_state.weapon and st.session_state.sorcery:
         except Exception as e:
             st.error(f"Failed to generate follow-up response: {e}")
         # Display chat messages
-        with st.chat_message("Assistant"):
+        with st.chat_message("assistant"):
             st.markdown(followupMessage)
 
 else:

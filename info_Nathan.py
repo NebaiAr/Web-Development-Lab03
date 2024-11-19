@@ -52,8 +52,8 @@ programming_data = {
 #CHANGE BELOW (OPTIONAL)
 programming_icons = {
     "Python": "🐍",
-    "Java": "☕",
-    "C": "🔍",
+    "Javascript": "☕",
+    "HTML": "🔍",
 }
 spoken_icons = {
     "English": "EN",

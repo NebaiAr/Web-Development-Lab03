@@ -32,10 +32,10 @@ course_data = {
     }
 experience_data = {
     "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",
-                                                                          "- Increased Company Revenue by 200 dollars", "- Made Mr. Krabs Proud"],"Images/cook.jpg"),
+                                                                          "- Increased Company Revenue by 200 dollars", "- Made Mr. Krabs Proud"],),
     "Cleaner at Krusty Krab":(["- Made the floor almost reflective",
-                                                           "- Increased customer visits by three folds by making restaurant clean"],"Images/cleaner.jpg"),
-    "Jelly Fish Catcher":(["- Caught 100+ Jellyfish with the help of my colleague Patrick"],"Images/jelly.jpg")
+                                                           "- Increased customer visits by three folds by making restaurant clean"],),
+    "Jelly Fish Catcher":(["- Caught 100+ Jellyfish with the help of my colleague Patrick"],)
 
 }
 

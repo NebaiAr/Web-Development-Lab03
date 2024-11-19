@@ -81,7 +81,7 @@ if st.session_state.weapon and st.session_state.sorcery:
     # Generate initial AI message if chat is empty
     if not st.session_state.messages:
         # Add a button to explicitly start the AI assistant
-        if st.button("Generate Strategy"):
+        if st.button("Generate Strategy") and "generated" not in st.session_state:
             try:
                 prompt = (
                     f'''
@@ -120,6 +120,7 @@ if st.session_state.weapon and st.session_state.sorcery:
                 response = model.generate_content(prompt)
                 aiMessage = response.text
                 st.session_state.messages.append({"role": "assistant", "content": aiMessage})
+                 st.session_state.generated = True
             except Exception as e:
                 st.error(f"Failed to generate strategy: {e}")
 
@@ -150,9 +151,5 @@ if st.session_state.weapon and st.session_state.sorcery:
         except Exception as e:
             st.error(f"Failed to generate follow-up response: {e}")
 
-    # Re-display the updated chat history
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
 else:
     st.write("Please select or randomize a weapon and sorcery to start.")

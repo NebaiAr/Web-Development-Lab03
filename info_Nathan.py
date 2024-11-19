@@ -32,7 +32,7 @@ course_data = {
     }
 experience_data = {
     "Volunteer at Fire Departments": (["- Mostly cleaned the firehouse and engines.",
-                                                                          "- Learned how to use a firehose, if the skill is needed.", "- Learned about some problems faced by rural fire departments, such as a lack of city water."],),
+                                                                          "- Learned how to use a firehose, if the skill is needed.", "- Learned about some problems faced by rural fire departments, such as a lack of city water."],"images/truck.jpg"),
     
 
 }

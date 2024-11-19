@@ -66,6 +66,7 @@ spoken_data = {
 }
 leadership_data = {
     "High School Academic Bowl Varsity Captain": (["- Led my team during practice and during matches"], "Images/AcademicBowl.jpg"),
+    "Team Lead": (["Managed a team of 5", "Delivered project ahead of schedule"], "Images/AcademicBowl.jpg"),
 
 }
 activity_data={

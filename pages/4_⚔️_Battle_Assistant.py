@@ -124,11 +124,6 @@ if st.session_state.weapon and st.session_state.sorcery:
             except Exception as e:
                 st.error(f"Failed to generate strategy: {e}")
 
-    # Display chat messages
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
     # Chat input for follow-up questions
     userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
     if userInput:
@@ -150,6 +145,9 @@ if st.session_state.weapon and st.session_state.sorcery:
             st.session_state.messages.append({"role": "assistant", "content": followupMessage})
         except Exception as e:
             st.error(f"Failed to generate follow-up response: {e}")
+        # Display chat messages
+        with st.chat_message("Assistant"):
+            st.markdown(followupMessage)
 
 else:
     st.write("Please select or randomize a weapon and sorcery to start.")

@@ -39,7 +39,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 if searchButton:
-    st.session_state.messages = None
+    st.session_state.messages = []
     if weaponName:
         response = req.get(f"{baseURL}/weapons?name={weaponName}").json()
         if response.get("data"):
@@ -59,7 +59,7 @@ if searchButton:
         st.error("Please enter a sorcery name or click the Randomize button.")
 
 elif randomButton:
-    st.session_state.messages = None
+    st.session_state.messages = []
     st.session_state.weapon = randomWeapon()
     st.session_state.sorcery = randomSorcery()
 

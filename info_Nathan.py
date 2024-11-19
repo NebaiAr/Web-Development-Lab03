@@ -66,10 +66,10 @@ spoken_data = {
     "Japanese": "Elementary",
 }
 leadership_data = {
-    "Driver at Mrs Puff's School": (["- Elected Worst Student of the Century"],"Images/leadership.jpg"),
+    "High School Academic Bowl Varsity Captain": (["- Led my team during practice and during matches"],"Images/leadership.jpg"),
 
 }
 activity_data={
-    "SpongeBob and Patrick Friendship Club": ["- Conviced Squidwards to have fun", 
-            "- Sat under Patrick's rock"]
+    "Marching band": ["- Marched sousaphone for a total of two years now", 
+            "- Learned a load of diligence from marching"]
 }

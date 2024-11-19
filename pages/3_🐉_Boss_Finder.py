@@ -4,7 +4,6 @@ import streamlit as st
 
 baseURL = "https://eldenring.fanapis.com/api"
 
-#NEW
 def getBossData(bossName=None):
     if bossName:
         response = req.get(f"{baseURL}/bosses?name={bossName}")
@@ -15,7 +14,6 @@ def getBossData(bossName=None):
         response = req.get(f"{baseURL}/bosses?name={bossName}")
     return response.json()
 
-#NEW
 def getRandomBoss():
     response = req.get(f"{baseURL}/bosses?limit=100")
     bosses = response.json().get("data")
@@ -23,7 +21,6 @@ def getRandomBoss():
     response = req.get(f"{baseURL}/bosses?name={randomBossName}")
     return response.json()
 
-#NEW
 def getItemData(response):
     bossInfo = response['data'][0]
     drops = bossInfo.get('drops', [])
@@ -55,7 +52,7 @@ def getItemData(response):
             data = response.json()
             if data['count'] > 0:
                 dropInfo = data['data'][0]
-                dropInfo['type'] = endpoint[:]  # Remove the trailing 's' for singular form
+                dropInfo['type'] = endpoint[:]
                 dropDetails.append(dropInfo)
                 found = True
                 break
@@ -72,27 +69,13 @@ def getItemData(response):
     }
     
     
-    
-    # itemType = None
-    # if "weaponsData" not in st.session_state:
-    #     st.session_state.weaponsData = req.get(f"{baseURL}/weapons?limit=400").json().get("data", [])
-    # if "itemsData" not in st.session_state:
-    #     st.session_state.itemsData = req.get(f"{baseURL}/items?limit=500").json().get("data", [])
-    # if "ashesData" not in st.session_state:
-    #     st.session_state.ashesData = req.get(f"{baseURL}/ashes?limit=100").json().get("data", [])
-    # if "sorceriesData" not in st.session_state:
-    #     st.session_state.sorceriesData = req.get(f"{baseURL}/sorceries?limit=100").json().get("data", [])
-    # if "incantData" not in st.session_state:
-    #     st.session_state.incantData = req.get(f"{baseURL}/incantations?limit=100").json().get("data", [])
-    # response = req.get(f"{baseURL}/{itemType}?name={itemName}").json()
-    # return response.json()
 #------------------------------------------------------------------------------#
 st.title("Elden Ring Boss Finder")
 
-#Input box for boss name
-bossName = st.text_input("Enter Boss Name:")
-
-searchButton = st.button("Search")
+#Input box for boss name + submit/random button created
+with st.form(key="boss_search_form"):
+    bossName = st.text_input("Enter Boss Name:") #NEW
+    searchButton = st.form_submit_button("Search") #NEW
 randomButton = st.button("Random")
 
 if "bossData" not in st.session_state:
@@ -131,7 +114,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
     st.write(st.session_state.bossInfo.get("healthPoints", "Unknown"))
     st.subheader("Item Drops")
     dropNames = [drop['name'] for drop in st.session_state.dropDetails]
-    selectedDrop = st.selectbox("Select a drop to view details:", dropNames)
+    selectedDrop = st.selectbox("Select a drop to view details:", dropNames) #NEW
     for drop in st.session_state.dropDetails:
         if drop['name'] == selectedDrop:
             st.write(f"**Name:** {drop['name']}")
@@ -142,8 +125,6 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             elif drop['image'] == None:
                 st.write(f"**Image**: No image available")
             break
-    # viewedItem = st.selectbox("Which drop would you like to view?", items)
-    # st.subheader(viewedItem)
     #for item in bossInfo.get("drops"):
     #    st.write(item, "Unknown")
 

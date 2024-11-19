@@ -111,7 +111,7 @@ if st.session_state.weapon and st.session_state.sorcery:
             '''
         )
         response = model.generate_content(prompt)
-        aiMessage = response.result
+        aiMessage = response.text
         st.session_state.messages.append({"role": "assistant", "content": aiMessage})
     except Exception as e:
         st.error(f"Failed to generate strategy: {e}")
@@ -129,7 +129,7 @@ if st.session_state.weapon and st.session_state.sorcery:
                 followupPrompt = f"{aiMessage}\n\nUser: {userInput}\nAssistant:"
                 try:
                     followupResponse = model.generate_content(followupPrompt)
-                    followupMessage = followupResponse.result
+                    followupMessage = followupResponse.text
                     st.session_state.messages.append({"role": "assistant", "content": followupMessage})
                 except Exception as e:
                     st.error(f"Failed to generate follow-up response: {e}")

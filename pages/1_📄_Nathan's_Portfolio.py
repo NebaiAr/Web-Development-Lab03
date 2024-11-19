@@ -52,9 +52,9 @@ education(info_Nathan.education_data, info_Nathan.course_data)
 
 def experience(experienceData):
     st.header("Professional Experience")
-    for jobTitle, (jobDescription, image) in experienceData.items():
+    for jobTitle, (jobDescription, ) in experienceData.items():
         expander = st.expander(f"{jobTitle}")
-        expander.image(image, width=250)
+        #expander.image(image, width=250)
         for bullet in jobDescription:
             expander.write(bullet)
     st.write('---')

@@ -28,7 +28,7 @@ course_data = {
     "code":["CS 1301", "CHEM 1310", "MATH 1551", "ENG 1102"], 
     "names":["Intro to CS", "Principles of General Chemistry for Engineers", "Differential Calculus", "English Composition II"], 
     "semester_taken":["1st", "1st", "1st", "1st"],
-    "skills":["Experience using Python, as well as elementary experience with HTML and Javascript.", "Experience working in a lab. Experience balancing my schedule.", "Differentiation and limits.", "Experience writing more refined essays and learning how to make poetry interesting for engineers."],
+    "skills":["Python as well as very basic HTML and a touch of Javascript.", "How to balance my schedule and how to write lab reports effectively.", "Differentiation and limits.", "How to make poetry interesting."],
     }
 experience_data = {
     "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",

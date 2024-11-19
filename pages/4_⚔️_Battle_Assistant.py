@@ -35,8 +35,8 @@ if "weapon" not in st.session_state:
     st.session_state.weapon = None
 if "sorcery" not in st.session_state:
     st.session_state.sorcery = None
-if "aiContext" not in st.session_state:
-    st.session_state.aiContext = ""
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 if searchButton:
     if weaponName:
@@ -111,19 +111,25 @@ if st.session_state.weapon and st.session_state.sorcery:
             '''
         )
         response = model.generate_content(prompt)
-        st.write(response.text)
+        aiMessage = response
+        st.session_state.messages.append({"role": "assistant", "content": aiMessage})
     except Exception as e:
         st.error(f"Failed to generate strategy: {e}")
-    
-    st.subheader("Now, do you have any more questions concerning this weapon combo?")
-    followupQuestion = st.text_input("Enter your follow-up question:")
-    followupButton = st.button("Ask AI")
 
-    if followupButton and followupQuestion:
-        try:
-            fullPrompt = f"{st.session_state.aiContext}\n\nFollow-up Question: {followupQuestion}"
-            followupResponse = model.generate_content(fullPrompt)
-            st.write(followupResponse.text)
-            st.session_state.aiContext += f"\n\nFollow-up Question: {followupQuestion}\nAI Response: {followupResponse.text}"
-        except Exception as e:
-            st.error(f"Failed to generate follow-up response: {e}")
+# Display chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+st.subheader("Now, do you have any more questions concerning this weapon combo?")
+if st.session_state.messages:
+        userInput = st.chat_input("Enter your follow-up question:")
+        if userInput:
+            st.session_state.messages.append({"role": "user", "content": userInput})
+            followupPrompt = f"{aiMessage}\n\nUser: {userInput}\nAssistant:"
+            try:
+                followupResponse = model.generate_content(followupPrompt)
+                followupMessage = followupResponse.text
+                st.session_state.messages.append({"role": "assistant", "content": followupMessage})
+            except Exception as e:
+                st.error(f"Failed to generate follow-up response: {e}")

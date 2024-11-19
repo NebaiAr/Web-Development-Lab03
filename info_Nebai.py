@@ -28,7 +28,7 @@ course_data = {
     "code":["CS 1301", "ENGL 1101", "MATH 1554", "PHYS 2211"], 
     "names":["Intro to CS", "English Composition I", "Linear Algebra", "Intro Physics 1"], 
     "semester_taken":["1st", "1st", "1st", "1st"],
-    "skills":["I learned introductory python in this course", "I learned how to analyze multimodal pieces of literature.", "I learned how to manipulate matrices in many, many different ways. All to solve Ax=b.", "I learned basic physics concepts such as kineamtics, momentum, forces, and energy."],
+    "skills":["I learned introductory python in this course", "I learned how to analyze multimodal pieces of literature.", "I learned how to manipulate matrices in many, many different ways. All to solve Ax=b.", "I learned basic physics concepts such as kinematics, momentum, forces, and energy."],
     }
 experience_data = {
     "Cashier at Goodberries Frozen Custard": (["- Experienced in running the register and cleaning the store",

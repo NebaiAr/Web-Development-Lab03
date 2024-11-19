@@ -112,7 +112,6 @@ if st.session_state.weapon and st.session_state.sorcery:
         )
         response = model.generate_content(prompt)
         aiMessage = response.text
-        st.session_state.messages.append({"role": "assistant", "content": aiMessage})
     except Exception as e:
         st.error(f"Failed to generate strategy: {e}")
 
@@ -132,5 +131,6 @@ if st.session_state.weapon and st.session_state.sorcery:
                 except Exception as e:
                     st.error(f"Failed to generate follow-up response: {e}")
     for message in st.session_state.messages:
-        st.chat_message(message["content"]):
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 

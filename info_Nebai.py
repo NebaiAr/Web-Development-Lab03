@@ -2,7 +2,7 @@
 #This File will contain the information to be displayed in your portfolio
 
 #CHANGE BELOW
-profile_picture = "Images/profile.jpeg"
+profile_picture = "Images/profile.jpg"
 about_me = "I'm Nebai Araya, a Computer Engineering student at Georgia Tech. I'm passionate about technology and enjoy working on projects that involve coding and hardware. I'm always looking for opportunities to learn and grow in the tech industry. Explore the rest of this page to learn more about me!"
 
 

@@ -66,7 +66,7 @@ spoken_data = {
     "Japanese": "Elementary",
 }
 leadership_data = {
-    "High School Academic Bowl Varsity Captain": (["- Led my team during practice and during matches"],"Images/leadership.jpg"),
+    "High School Academic Bowl Varsity Captain": (["- Led my team during practice and during matches"]),
 
 }
 activity_data={

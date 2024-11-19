@@ -44,9 +44,9 @@ projects_data = {
 }
 
 programming_data = {
-    "Python": 90,
-    "Java": 70,
-    "C": 40,
+    "Python": 100,
+    "Java": 50,
+    "C": 10,
 }
 
 #CHANGE BELOW (OPTIONAL)

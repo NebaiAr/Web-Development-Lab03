@@ -132,8 +132,8 @@ if st.session_state.weapon and st.session_state.sorcery:
                     st.session_state.messages.append({"role": "assistant", "content": followupMessage})
                 except Exception as e:
                     st.error(f"Failed to generate follow-up response: {e}")
-    for message in st.session_state.messages:
-        if message == aiMessage:
+    for index, message in enumerate(st.session_state.messages):
+        if index == 0:
             pass
         else:
             with st.chat_message(message["role"]):

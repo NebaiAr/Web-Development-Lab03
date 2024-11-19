@@ -69,6 +69,6 @@ leadership_data = {
 
 }
 activity_data={
-    "SpongeBob and Patrick Friendship Club": ["- Conviced Squidwards to have fun", 
-            "- Sat under Patrick's rock"]
+    "Habitat for Humanity": ["- Constructed houses on Saturday mornings with Habitat for Humanity",
+            "- Learned how to paint properly, put up siding, etc."]
 }

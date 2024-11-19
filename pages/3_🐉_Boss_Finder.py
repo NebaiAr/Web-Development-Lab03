@@ -125,7 +125,3 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
             elif drop['image'] == None:
                 st.write(f"**Image**: No image available")
             break
-    #for item in bossInfo.get("drops"):
-    #    st.write(item, "Unknown")
-
-#Next task: Get dropped items and display their information

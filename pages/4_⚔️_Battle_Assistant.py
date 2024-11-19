@@ -139,5 +139,5 @@ if st.session_state.weapon and st.session_state.sorcery:
         if index == 0:
             pass
         else:
-            with st.chat_message(message["role"]):
+            with st.chat_message(message["role"], avatar=st.image('Images/Godfrey.jpg')):
                 st.markdown(message["content"])

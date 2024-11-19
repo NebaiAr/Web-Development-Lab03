@@ -2,7 +2,7 @@
 #This File will contain the information to be displayed in your portfolio
 
 #CHANGE BELOW
-profile_picture = "Images/profile.jpg"
+profile_picture = "Images/profile2.jpg"
 about_me = "I'm Nathan Wilson. I'm a first year Computer Engineering major at the Georgia Institute of Technology interested in hardware, web development, and game design."
 
 

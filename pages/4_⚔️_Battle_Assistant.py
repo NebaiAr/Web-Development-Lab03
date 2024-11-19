@@ -126,7 +126,7 @@ if st.session_state.weapon and st.session_state.sorcery:
             userInput = st.chat_input("Enter your follow-up question:")
             if userInput:
                 st.session_state.messages.append({"role": "user", "content": userInput})
-                followupPrompt = f"{aiMessage}\n\nUser: {userInput}\nAssistant:"
+                followupPrompt = f"{st.session_state.messages[0]["content"]}\n\nUser: {userInput}\nAssistant:"
                 try:
                     followupResponse = model.generate_content(followupPrompt)
                     followupMessage = followupResponse.text

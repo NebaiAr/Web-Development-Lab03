@@ -119,7 +119,7 @@ if st.session_state.bossData and "data" in st.session_state.bossData and st.sess
         if drop['name'] == selectedDrop:
             st.write(f"**Name:** {drop['name']}")
             st.write(f"**Type:** {drop['type'].capitalize()}")
-            st.write(f"**Description:** {drop.get('description', 'No description available.')}")
+            st.write(f"**Description:** {drop.get('description')}")
             if type(drop['image']) == str:
                 st.image(drop['image'])
             elif drop['image'] == None:

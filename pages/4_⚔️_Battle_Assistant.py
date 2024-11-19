@@ -72,9 +72,30 @@ if weapon and sorcery:
     st.subheader("Battle Strategy")
     try:
         prompt = (
-            f"Explain how to effectively use the weapon '{weapon['name']}' and "
-            f"the sorcery '{sorcery['name']}' in combination during battle in Elden Ring. "
-            f"Provide a detailed strategy for maximizing their synergy."
+            f'''The attack key for weapons contains different types of damage and the amount
+            of damage dealt by that weapon in particular. The defence key is similar, but rather
+            than being a flat damage reduction, the amount describes the percent of that damage
+            type that is blocked when the weapon is used to guard. The scalesWith key contains
+            data for which stats the weapon damage scales with, and the letter under scaling
+            describes how much the damage of the weapon scales. E scaling isn't great, D scaling
+            is better, C scaling is roughly average, B scaling is good, A scaling is great, and
+            S scaling is typically the best. The only weapons this works differently for are
+            staffs and finger seals, which use the stat scaling to determine spell scaling
+            (which affects the damage of sorceries and incantations). For instance, if a weapon
+            scales D in strength and A in dex, it's more effective to level dexterity as it
+            increases the damage more than leveling strength. The category describes what type
+            of weapon it is, and the weight is how heavy it is. This is important primarily for
+            playstyle purposes, as some players forfeit faster rolls and some agility for more
+            defense. The description key (before attack) is a rough lore description of the
+            weapon. Weapon data can be found as {st.session_state.weapon}. Sorceries work differently,
+            using some different values than weapons. Under the sorceries endpoint of the API,
+            cost describes how much FP (think mana) is required to use the sorcery. the
+            description is, again, an in-lore description of the sorcery, providing some
+            background information. The effects describes what the sorcery does (i.e. strikes
+            from behind with projectile fired from distance' for the spell Ambush Shard).
+            The requires key shows what stats are required to cast the sorcery in question and
+            how much of that stat is required. For instance, the spell Ambush Shard requires 23
+            intelligence, 0 faith, and 0 arcane to cast. Sorcery data is {st.session_state.sorcery}'''
         )
         response = model.generate_content(prompt)
         st.write(response) 

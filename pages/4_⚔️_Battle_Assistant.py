@@ -75,71 +75,72 @@ if st.session_state.weapon and st.session_state.sorcery:
         st.write(f"**Description:** {st.session_state.sorcery.get('description', 'No description available.')}")
 
     st.subheader("Battle Strategy")
-try:
     # Initial prompt for generating the strategy
     if not st.session_state.messages:
-        prompt = (
-            f'''
-            You are an Elden Ring battle assistant. Your purpose is to take in a weapon and 
-            a sorcery and give the user tips on how to implement them into their builds.
-            The attack key for weapons contains different types of damage and the amount
-            of damage dealt by that weapon in particular. The defence key is similar, but rather
-            than being a flat damage reduction, the amount describes the percent of that damage
-            type that is blocked when the weapon is used to guard. The scalesWith key contains
-            data for which stats the weapon damage scales with, and the letter under scaling
-            describes how much the damage of the weapon scales. E scaling isn't great, D scaling
-            is better, C scaling is roughly average, B scaling is good, A scaling is great, and
-            S scaling is typically the best. The only weapons this works differently for are
-            staffs and finger seals, which use the stat scaling to determine spell scaling
-            (which affects the damage of sorceries and incantations). For instance, if a weapon
-            scales D in strength and A in dex, it's more effective to level dexterity as it
-            increases the damage more than leveling strength. The category describes what type
-            of weapon it is, and the weight is how heavy it is. This is important primarily for
-            playstyle purposes, as some players forfeit faster rolls and some agility for more
-            defense. The description key (before attack) is a rough lore description of the
-            weapon. Weapon data can be found as {st.session_state.weapon}. Sorceries work differently,
-            using some different values than weapons. Under the sorceries endpoint of the API,
-            cost describes how much FP (think mana) is required to use the sorcery. the
-            description is, again, an in-lore description of the sorcery, providing some
-            background information. The effects describes what the sorcery does (i.e. strikes
-            from behind with projectile fired from distance' for the spell Ambush Shard).
-            The requires key shows what stats are required to cast the sorcery in question and
-            how much of that stat is required. For instance, the spell Ambush Shard requires 23
-            intelligence, 0 faith, and 0 arcane to cast. Sorcery data is {st.session_state.sorcery}.
-            Use the provided data to describe how the weapon and sorcery could be combined in a build.
-            for instance, how could a magic based weapon that scales on int be combined with an arcane sorcery?
-            Also be sure to give a list of how these could be effectively used against low level enemies,
-            mid-leveled enemies, and boss type enemies.
-            '''
-        )
-        response = model.generate_content(prompt)
-        aiMessage = response.text
-        st.session_state.messages.append({"role": "assistant", "content": aiMessage})
-except Exception as e:
-    st.error(f"Failed to generate strategy: {e}")
-st.write(aiMessage)
-
-userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
-if userInput:
-    # Display user's message immediately
-    st.session_state.messages.append({"role": "user", "content": userInput})
-    with st.chat_message("user"):
-        st.markdown(userInput)
-
-    # Construct prompt using the full conversation history
-    followupPrompt = "\n".join(
-        f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state.messages
-    ) + "\nAssistant:"
-
-    try:
-        followupResponse = model.generate_content(followupPrompt)
-        followupMessage = followupResponse.text
-        # Add AI's response to chat history
-        st.session_state.messages.append({"role": "assistant", "content": followupMessage})
-        with st.chat_message("assistant"):
-            st.markdown(followupMessage)
-    except Exception as e:
-        st.error(f"Failed to generate follow-up response: {e}")
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+        if st.button("Generate Strategy"):
+            try:
+                prompt = (
+                    f'''
+                    You are an Elden Ring battle assistant. Your purpose is to take in a weapon and 
+                    a sorcery and give the user tips on how to implement them into their builds.
+                    The attack key for weapons contains different types of damage and the amount
+                    of damage dealt by that weapon in particular. The defence key is similar, but rather
+                    than being a flat damage reduction, the amount describes the percent of that damage
+                    type that is blocked when the weapon is used to guard. The scalesWith key contains
+                    data for which stats the weapon damage scales with, and the letter under scaling
+                    describes how much the damage of the weapon scales. E scaling isn't great, D scaling
+                    is better, C scaling is roughly average, B scaling is good, A scaling is great, and
+                    S scaling is typically the best. The only weapons this works differently for are
+                    staffs and finger seals, which use the stat scaling to determine spell scaling
+                    (which affects the damage of sorceries and incantations). For instance, if a weapon
+                    scales D in strength and A in dex, it's more effective to level dexterity as it
+                    increases the damage more than leveling strength. The category describes what type
+                    of weapon it is, and the weight is how heavy it is. This is important primarily for
+                    playstyle purposes, as some players forfeit faster rolls and some agility for more
+                    defense. The description key (before attack) is a rough lore description of the
+                    weapon. Weapon data can be found as {st.session_state.weapon}. Sorceries work differently,
+                    using some different values than weapons. Under the sorceries endpoint of the API,
+                    cost describes how much FP (think mana) is required to use the sorcery. the
+                    description is, again, an in-lore description of the sorcery, providing some
+                    background information. The effects describes what the sorcery does (i.e. strikes
+                    from behind with projectile fired from distance' for the spell Ambush Shard).
+                    The requires key shows what stats are required to cast the sorcery in question and
+                    how much of that stat is required. For instance, the spell Ambush Shard requires 23
+                    intelligence, 0 faith, and 0 arcane to cast. Sorcery data is {st.session_state.sorcery}.
+                    Use the provided data to describe how the weapon and sorcery could be combined in a build.
+                    for instance, how could a magic based weapon that scales on int be combined with an arcane sorcery?
+                    Also be sure to give a list of how these could be effectively used against low level enemies,
+                    mid-leveled enemies, and boss type enemies.
+                    '''
+                )
+                response = model.generate_content(prompt)
+                aiMessage = response.text
+                st.session_state.messages.append({"role": "assistant", "content": aiMessage})
+            except Exception as e:
+            st.error(f"Failed to generate strategy: {e}")
+            st.write(aiMessage)
+            
+            userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
+            if userInput:
+            # Display user's message immediately
+            st.session_state.messages.append({"role": "user", "content": userInput})
+            with st.chat_message("user"):
+                st.markdown(userInput)
+            
+            # Construct prompt using the full conversation history
+            followupPrompt = "\n".join(
+                f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state.messages
+            ) + "\nAssistant:"
+            
+            try:
+                followupResponse = model.generate_content(followupPrompt)
+                followupMessage = followupResponse.text
+                # Add AI's response to chat history
+                st.session_state.messages.append({"role": "assistant", "content": followupMessage})
+                with st.chat_message("assistant"):
+                    st.markdown(followupMessage)
+            except Exception as e:
+                st.error(f"Failed to generate follow-up response: {e}")
+            for message in st.session_state.messages:
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])

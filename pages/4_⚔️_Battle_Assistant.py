@@ -75,8 +75,12 @@ if st.session_state.weapon and st.session_state.sorcery:
         st.write(f"**Description:** {st.session_state.sorcery.get('description', 'No description available.')}")
 
     st.subheader("Battle Strategy")
-    # Initial prompt for generating the strategy
+
+# Ensure weapon and sorcery are selected
+if st.session_state.weapon and st.session_state.sorcery:
+    # Generate initial AI message if chat is empty
     if not st.session_state.messages:
+        # Add a button to explicitly start the AI assistant
         if st.button("Generate Strategy"):
             try:
                 prompt = (
@@ -118,29 +122,37 @@ if st.session_state.weapon and st.session_state.sorcery:
                 st.session_state.messages.append({"role": "assistant", "content": aiMessage})
             except Exception as e:
                 st.error(f"Failed to generate strategy: {e}")
-            st.write(aiMessage)
-            
-            userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
-            if userInput:
-            # Display user's message immediately
-                st.session_state.messages.append({"role": "user", "content": userInput})
-                with st.chat_message("user"):
-                    st.markdown(userInput)
-                
-                # Construct prompt using the full conversation history
-                followupPrompt = "\n".join(
-                    f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state.messages
-                ) + "\nAssistant:"
-                
-                try:
-                    followupResponse = model.generate_content(followupPrompt)
-                    followupMessage = followupResponse.text
-                    # Add AI's response to chat history
-                    st.session_state.messages.append({"role": "assistant", "content": followupMessage})
-                    with st.chat_message("assistant"):
-                        st.markdown(followupMessage)
-                except Exception as e:
-                    st.error(f"Failed to generate follow-up response: {e}")
-                for message in st.session_state.messages:
-                    with st.chat_message(message["role"]):
-                        st.markdown(message["content"])
+
+    # Display chat messages
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    # Chat input for follow-up questions
+    userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
+    if userInput:
+        # Add user's message to chat history
+        st.session_state.messages.append({"role": "user", "content": userInput})
+        # Display the user's message
+        with st.chat_message("user"):
+            st.markdown(userInput)
+
+        # Construct prompt using the full conversation history
+        followupPrompt = "\n".join(
+            f"{msg['role'].capitalize()}: {msg['content']}" for msg in st.session_state.messages
+        ) + "\nAssistant:"
+
+        try:
+            followupResponse = model.generate_content(followupPrompt)
+            followupMessage = followupResponse.text
+            # Add AI's response to chat history
+            st.session_state.messages.append({"role": "assistant", "content": followupMessage})
+        except Exception as e:
+            st.error(f"Failed to generate follow-up response: {e}")
+
+    # Re-display the updated chat history
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+else:
+    st.write("Please select or randomize a weapon and sorcery to start.")

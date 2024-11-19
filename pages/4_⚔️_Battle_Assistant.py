@@ -30,7 +30,7 @@ with st.form("battle_form"):
     searchButton = st.form_submit_button("Search")
 randomButton = st.button("Randomize Weapon and Sorcery")
 
-# Weapon, Sorcery, and AI Context data
+# Weapon, Sorcery, and chat message data
 if "weapon" not in st.session_state:
     st.session_state.weapon = None
 if "sorcery" not in st.session_state:

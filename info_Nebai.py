@@ -31,9 +31,9 @@ course_data = {
     "skills":["I learned introductory python in this course", "I learned how to analyze multimodal pieces of literature.", "I learned how to manipulate matrices in many, many different ways. All to solve Ax=b.", "I learned basic physics concepts such as kineamtics, momentum, forces, and energy."],
     }
 experience_data = {
-    "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",
-                                                                          "- Increased Company Revenue by 200 dollars", "- Made Mr. Krabs Proud"],"Images/cook.jpg"),
-    "Cleaner at Krusty Krab":(["- Made the floor almost reflective",
+    "Cashier at Goodberries Frozen Custard": (["- Experienced in running the register and cleaning the store",
+                                                                          "- Entrusted with training new employees", "- Made my old manager Darwin proud"],"Images/cook.jpg"),
+    "Prompting Engineer at Ember Learning":(["- Made the floor almost reflective",
                                                            "- Increased customer visits by three folds by making restaurant clean"],"Images/cleaner.jpg"),
     "Jelly Fish Catcher":(["- Caught 100+ Jellyfish with the help of my colleague Patrick"],"Images/jelly.jpg")
 

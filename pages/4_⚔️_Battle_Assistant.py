@@ -117,9 +117,7 @@ if st.session_state.weapon and st.session_state.sorcery:
         st.error(f"Failed to generate strategy: {e}")
 
     # Display chat messages
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    st.write(st.session_state.messages[0]["content"])
 
     st.subheader("Now, do you have any more questions concerning this weapon combo?")
     if st.session_state.messages:
@@ -133,3 +131,6 @@ if st.session_state.weapon and st.session_state.sorcery:
                     st.session_state.messages.append({"role": "assistant", "content": followupMessage})
                 except Exception as e:
                     st.error(f"Failed to generate follow-up response: {e}")
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])

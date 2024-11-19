@@ -116,6 +116,6 @@ if st.session_state.weapon and st.session_state.sorcery:
             fullPrompt = f"{st.session_state.aiContext}\n\nFollow-up Question: {followupQuestion}"
             followupResponse = model.generate_content(fullPrompt)
             st.write(followupResponse.text)
-            st.session_state.ai_context += f"\n\nFollow-up Question: {followupQuestion}\nAI Response: {followupResponse.text}"
+            st.session_state.aiContext += f"\n\nFollow-up Question: {followupQuestion}\nAI Response: {followupResponse.text}"
         except Exception as e:
             st.error(f"Failed to generate follow-up response: {e}")

@@ -119,7 +119,7 @@ if st.session_state.weapon and st.session_state.sorcery:
         st.error(f"Failed to generate strategy: {e}")
     
     # Display chat messages
-    st.write(aiMessage)
+    st.write(st.session_state.messages[0]["content"])
     
     st.subheader("Now, do you have any more questions concerning this weapon combo?")
     if st.session_state.messages:

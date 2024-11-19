@@ -112,6 +112,8 @@ if st.session_state.weapon and st.session_state.sorcery:
         )
         response = model.generate_content(prompt)
         aiMessage = response.text
+        if not st.session_state.messages:
+            st.session_state.messages.append({"role": "assistant", "content": aiMessage})
     except Exception as e:
         st.error(f"Failed to generate strategy: {e}")
 

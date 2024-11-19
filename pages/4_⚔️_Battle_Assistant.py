@@ -111,7 +111,7 @@ if st.session_state.weapon and st.session_state.sorcery:
             '''
         )
         response = model.generate_content(prompt)
-        st.write(response) 
+        st.write(response.text)
     except Exception as e:
         st.error(f"Failed to generate strategy: {e}")
     

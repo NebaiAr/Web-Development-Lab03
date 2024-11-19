@@ -118,7 +118,7 @@ if st.session_state.weapon and st.session_state.sorcery:
                 st.session_state.messages.append({"role": "assistant", "content": aiMessage})
             except Exception as e:
                 st.error(f"Failed to generate strategy: {e}")
-                st.write(aiMessage)
+            st.write(aiMessage)
             
             userInput = st.chat_input("Do you have any more questions concerning this weapon combo?")
             if userInput:

@@ -33,8 +33,8 @@ course_data = {
 experience_data = {
     "Cashier at Goodberries Frozen Custard": (["- Experienced in running the register and cleaning the store",
                                                                           "- Entrusted with training new employees", "- Made my old manager Darwin proud"],"Images/Goodberrys_logo.webp"),
-    "Prompting Engineer at Ember Learning":(["- Made the floor almost reflective",
-                                                           "- Increased customer visits by three folds by making restaurant clean"],"Images/cleaner.jpg"),
+    "Prompting Engineer at DeAP Learning":(["- Wrote the prompts behind most of the AI tutors and graders on the website.",
+                                                           "- Led a prompting team to complete assignments and reach goals for 2-week cycles"],"Images/cleaner.jpg"),
     "Jelly Fish Catcher":(["- Caught 100+ Jellyfish with the help of my colleague Patrick"],"Images/jelly.jpg")
 
 }

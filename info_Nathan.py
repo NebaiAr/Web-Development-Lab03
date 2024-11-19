@@ -65,7 +65,7 @@ spoken_data = {
     "Japanese": "Elementary",
 }
 leadership_data = {
-    "Assistant Instructor at KICKS Taekwondo": (["- Helped lead the teens/adults class alongside the lead instructor. As there were usually 15+ people in class, I had to be flexible."],"Images/Taekwondo.jpg"),
+    "High School Academic Bowl Varsity Captain": (["- Led my team during practice and during matches"], "Images/AcademicBowl.jpg"),
 
 }
 activity_data={

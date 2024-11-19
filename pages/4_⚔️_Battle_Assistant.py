@@ -111,6 +111,8 @@ if st.session_state.weapon and st.session_state.sorcery:
                 for instance, how could a magic based weapon that scales on int be combined with an arcane sorcery?
                 Also be sure to give a list of how these could be effectively used against low level enemies,
                 mid-leveled enemies, and boss type enemies.
+                Finally, if the user tries to talk about ANYTHING other than topics within the scope of Elden Ring, kindly redirect the conversation back to
+                Elden Ring and the weapon combo.
                 '''
             )
             response = model.generate_content(prompt)

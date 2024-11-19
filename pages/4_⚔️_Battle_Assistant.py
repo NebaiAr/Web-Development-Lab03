@@ -77,7 +77,10 @@ if st.session_state.weapon and st.session_state.sorcery:
     st.subheader("Battle Strategy")
     try:
         prompt = (
-            f'''The attack key for weapons contains different types of damage and the amount
+            f'''
+            You are an Elden Ring battle assistant. Your purpose is to take in a weapon and 
+            a sorcery and give the user tips on how to implement them into their builds.
+            The attack key for weapons contains different types of damage and the amount
             of damage dealt by that weapon in particular. The defence key is similar, but rather
             than being a flat damage reduction, the amount describes the percent of that damage
             type that is blocked when the weapon is used to guard. The scalesWith key contains
@@ -100,7 +103,12 @@ if st.session_state.weapon and st.session_state.sorcery:
             from behind with projectile fired from distance' for the spell Ambush Shard).
             The requires key shows what stats are required to cast the sorcery in question and
             how much of that stat is required. For instance, the spell Ambush Shard requires 23
-            intelligence, 0 faith, and 0 arcane to cast. Sorcery data is {st.session_state.sorcery}'''
+            intelligence, 0 faith, and 0 arcane to cast. Sorcery data is {st.session_state.sorcery}.
+            Use the provided data to describe how the weapon and sorcery could be combined in a build.
+            for instance, how could a magic based weapon that scales on int be combined with an arcane sorcery?
+            Also be sure to give a list of how these could be effectively used against low level enemies,
+            mid-leveled enemies, and boss type enemies.
+            '''
         )
         response = model.generate_content(prompt)
         st.write(response) 

@@ -91,9 +91,8 @@ def activities(leadershipData, activityData):
     leadership, activities = st.tabs(['Leadership', 'Other'])
     with leadership:
         st.subheader('Leadership')
-        for title, (details, image) in leadershipData.items():
+        for title, (details) in leadershipData.items():
             expander = st.expander(f"{title}")
-            expander.image(image, width=250)
             for bullet in details:
                 expander.write(bullet)
     with activities:

@@ -91,15 +91,15 @@ def activities(leadershipData, activityData):
     leadership, activities = st.tabs(['Leadership', 'Other'])
     with leadership:
         st.subheader('Leadership')
-        for title, (details) in leadershipData.items():
+        for title, details in leadershipData.items():
             expander = st.expander(f"{title}")
             for bullet in details:
                 expander.write(bullet)
     with activities:
         st.subheader("Community Service")
-        for title, details in activityData.items():
+        for title, detail in activityData.items():
             expander = st.expander(f'{title}')
-            for bullets in details:
+            for bullets in detail:
                 expander.write(bullet)
     st.write('---')
 activities(info_Nathan.leadership_data, info_Nathan.activity_data)

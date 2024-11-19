@@ -12,9 +12,9 @@ github_image_url = "https://cdn-icons-png.flaticon.com/256/25/25231.png"
 email_image_url = "https://logowik.com/content/uploads/images/513_email.jpg"
 
 #CHANGE BELOW
-my_linkedin_url = "https://www.linkedin.com/in/spongebob-squarepants-44b857281/"
-my_github_url = "https://github.com/spongebob-squarepants"
-my_email_address = "spongebob@gmail.com"
+my_linkedin_url = "www.linkedin.com/in/nebai-araya"
+my_github_url = "https://github.com/NebaiAr"
+my_email_address = "naraya6@gatech.edu"
 
 
 education_data ={
@@ -25,10 +25,10 @@ education_data ={
     'GPA': 'N/A'
 }
 course_data = {
-    "code":["CS 1301", "CS 1331", "MATH 1554", "CS 2050"], 
-    "names":["Intro to CS", "Intro to OOP", "Linear Algebra", "Discrete Mathematics"], 
-    "semester_taken":["2nd", "3rd", "2nd", "2nd"],
-    "skills":["Python is not my favorite snake anymore", "OOP(S!) (Java Edition)", "Basically row reduction", "If only my grade was discrete too..."],
+    "code":["CS 1301", "ENGL 1101", "MATH 1554", "PHYS 2211"], 
+    "names":["Intro to CS", "English Composition I", "Linear Algebra", "Intro Physics 1"], 
+    "semester_taken":["1st", "1st", "1st", "1st"],
+    "skills":["I learned introductory python in this course", "I learned how to analyze multimodal pieces of literature.", "I learned how to manipulate matrices in many, many different ways. All to solve Ax=b.", "I learned basic physics concepts such as kineamtics, momentum, forces, and energy."],
     }
 experience_data = {
     "Cook at Krusty Krab": (["- Worked on designing the Krabby Patty Recipe",
